@@ -8,13 +8,13 @@ services:
       - SPRING_APPLICATION_NAME=config-server
       - SERVER_PORT=8081
       - SPRING_CLOUD_CONFIG_SERVER_GIT_DEFAULT-LABEL=master
-      - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=https://github.com/Martinodark19/microservicios.git
+      - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=https://github.com/Martinodark19/microservicios-deploy.git
       - SPRING_CLOUD_CONFIG_SERVER_GIT_SEARCH_PATHS=config-data
     networks:
       - microservices-network
 
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://config-server/actuator/health || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://config-server:8081/actuator/health || exit 1"]
       interval: 1m30s
       timeout: 30s
       retries: 5
@@ -27,13 +27,13 @@ services:
     environment:
       - SPRING_APPLICATION_NAME=eureka-server
       - SPRING_CLOUD_CONFIG_ENABLED=true
-      - SPRING_CLOUD_CONFIG_URI=http://config-server
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8081
      
     networks:
       - microservices-network
 
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://eureka-server/actuator/health || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://eureka-server:8761/actuator/health || exit 1"]
       interval: 1m30s
       timeout: 30s
       retries: 5
@@ -49,13 +49,13 @@ services:
       - 8080:8080
     environment:
       - SPRING_APPLICATION_NAME=gateway-service
-      - SPRING_CLOUD_CONFIG_URI=http://config-server
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8081
       - SPRING_CLOUD_CONFIG_ENABLED=true
     networks:
       - microservices-network
 
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://gateway-service/actuator/health || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://gateway-service:8080/actuator/health || exit 1"]
       interval: 1m30s
       timeout: 30s
       retries: 5
@@ -72,7 +72,7 @@ services:
       - 9090:9090
     environment:
       - SPRING_APPLICATION_NAME=usuario-service
-      - SPRING_CLOUD_CONFIG_URI=http://config-server
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8081
       - SPRING_CLOUD_CONFIG_ENABLED=true
 
     networks:
@@ -91,7 +91,7 @@ services:
       - 9000:9000 
     environment:
       - SPRING_APPLICATION_NAME=moto-service
-      - SPRING_CLOUD_CONFIG_URI=http://config-server
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8081
       - SPRING_CLOUD_CONFIG_ENABLED=true
     networks:
       - microservices-network
@@ -110,7 +110,7 @@ services:
       - 10000:10000
     environment:
       - SPRING_APPLICATION_NAME=carro-service
-      - SPRING_CLOUD_CONFIG_URI=http://config-server
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8081
       - SPRING_CLOUD_CONFIG_ENABLED=true
     networks:
       - microservices-network
