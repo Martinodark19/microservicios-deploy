@@ -7,7 +7,7 @@ services:
     environment:
       - SPRING_APPLICATION_NAME=config-server
       - SERVER_PORT=8081
-      - SPRING_CLOUD_CONFIG_SERVER_GIT_DEFAULT-LABEL=circuit-breaker 
+      - SPRING_CLOUD_CONFIG_SERVER_GIT_DEFAULT-LABEL=master
       - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=https://github.com/Martinodark19/microservicios.git
       - SPRING_CLOUD_CONFIG_SERVER_GIT_SEARCH_PATHS=config-data
     networks:
@@ -27,7 +27,7 @@ services:
     environment:
       - SPRING_APPLICATION_NAME=eureka-server
       - SPRING_CLOUD_CONFIG_ENABLED=true
-      - SPRING_CLOUD_CONFIG_URI=http://localhost:8081
+      - SPRING_CLOUD_CONFIG_URI=http://config-server
      
     networks:
       - microservices-network
@@ -49,7 +49,7 @@ services:
       - 8080:8080
     environment:
       - SPRING_APPLICATION_NAME=gateway-service
-      - SPRING_CLOUD_CONFIG_URI=http://localhost:8081
+      - SPRING_CLOUD_CONFIG_URI=http://config-server
       - SPRING_CLOUD_CONFIG_ENABLED=true
     networks:
       - microservices-network
@@ -72,7 +72,7 @@ services:
       - 9090:9090
     environment:
       - SPRING_APPLICATION_NAME=usuario-service
-      - SPRING_CLOUD_CONFIG_URI=http://localhost:8081
+      - SPRING_CLOUD_CONFIG_URI=http://config-server
       - SPRING_CLOUD_CONFIG_ENABLED=true
 
     networks:
@@ -91,7 +91,7 @@ services:
       - 9000:9000 
     environment:
       - SPRING_APPLICATION_NAME=moto-service
-      - SPRING_CLOUD_CONFIG_URI=http://localhost:8081
+      - SPRING_CLOUD_CONFIG_URI=http://config-server
       - SPRING_CLOUD_CONFIG_ENABLED=true
     networks:
       - microservices-network
@@ -110,7 +110,7 @@ services:
       - 10000:10000
     environment:
       - SPRING_APPLICATION_NAME=carro-service
-      - SPRING_CLOUD_CONFIG_URI=http://localhost:8081
+      - SPRING_CLOUD_CONFIG_URI=http://config-server
       - SPRING_CLOUD_CONFIG_ENABLED=true
     networks:
       - microservices-network
