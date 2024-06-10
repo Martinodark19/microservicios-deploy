@@ -14,7 +14,7 @@ services:
       - microservices-network
 
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8081/actuator/health || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://config-server/actuator/health || exit 1"]
       interval: 1m30s
       timeout: 30s
       retries: 5
@@ -33,7 +33,7 @@ services:
       - microservices-network
 
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8761/actuator/health || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://eureka-server/actuator/health || exit 1"]
       interval: 1m30s
       timeout: 30s
       retries: 5
@@ -55,7 +55,7 @@ services:
       - microservices-network
 
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://gateway-service/actuator/health || exit 1"]
       interval: 1m30s
       timeout: 30s
       retries: 5
