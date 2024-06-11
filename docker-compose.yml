@@ -44,7 +44,7 @@ services:
           condition: service_healthy
 
   gateway-service:
-    image: gateway-service-image:1.0
+    image: gateway-service-image:2.0
     ports:
       - 8080:8080
     environment:
