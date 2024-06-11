@@ -85,7 +85,7 @@ services:
           condition: service_healthy
        gateway-service:
           condition: service_healthy
-
+    
   moto-service:
     image: moto-service-image:1.0
     ports:
@@ -97,7 +97,7 @@ services:
     networks:
       - microservices-network
 
-    depends_on:
+    depends_on: 
        config-server:
           condition: service_healthy
        eureka-server:
