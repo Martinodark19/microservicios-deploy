@@ -68,7 +68,7 @@ services:
           condition: service_healthy
 
   usuario-service:
-    image: usuario-service-image:1.0
+    image: usuario-service-image:2.0
     ports:
       - 9090:9090
     environment:
@@ -85,7 +85,7 @@ services:
           condition: service_healthy
        gateway-service:
           condition: service_healthy
-    
+
   moto-service:
     image: moto-service-image:1.0
     ports:

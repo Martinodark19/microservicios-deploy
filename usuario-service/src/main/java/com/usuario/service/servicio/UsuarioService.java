@@ -14,7 +14,6 @@ import com.usuario.service.modelos.Carro;
 import com.usuario.service.modelos.Moto;
 import com.usuario.service.repositorio.UsuarioRepository;
 
-
 @Service
 public class UsuarioService {
 
@@ -82,7 +81,7 @@ public class UsuarioService {
 	public Carro saveCarro(int usuarioId, Carro carro) {
 		carro.setUsuarioId(usuarioId);
 		Carro nuevoCarro = carroFeignClient.guardarCarro(carro);
-		
+
 		return nuevoCarro;
 	}
 
@@ -91,7 +90,5 @@ public class UsuarioService {
 		Moto nuevaMoto = motoFeignClient.guardarMoto(moto);
 		return nuevaMoto;
 	}
-
-	
 
 }
