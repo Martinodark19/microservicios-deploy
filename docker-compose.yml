@@ -28,7 +28,7 @@ services:
       - SPRING_APPLICATION_NAME=eureka-server
       - SPRING_CLOUD_CONFIG_ENABLED=true
       - SPRING_CLOUD_CONFIG_URI=http://config-server:8081
-     
+    
     networks:
       - microservices-network
 
@@ -42,7 +42,6 @@ services:
     depends_on:
        config-server:
           condition: service_healthy
-
 
   usuario-service:
     image: usuario-service-image:2.0
@@ -67,8 +66,7 @@ services:
           condition: service_healthy
        eureka-server:
           condition: service_healthy
-     
-
+        
   moto-service:
     image: moto-service-image:1.0
     ports:
@@ -94,8 +92,7 @@ services:
           condition: service_healthy
        usuario-service:
           condition: service_healthy
-  
-
+          
   carro-service:
     image: carro-service-image:1.0
     ports:
@@ -108,7 +105,7 @@ services:
       - microservices-network
 
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://moto-service:10000/actuator/health || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://carro-service:10000/actuator/health || exit 1"]
       interval: 30s
       timeout: 30s
       retries: 5
@@ -120,9 +117,6 @@ services:
           condition: service_healthy
        usuario-service:
           condition: service_healthy
-   
-
-
 
   gateway-service:
     image: gateway-service-image:2.0
