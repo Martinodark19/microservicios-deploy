@@ -23,11 +23,6 @@ services:
     image: eureka-server-image:1.0
     ports:
       - 8761:8761
-    environment:
-      - SPRING_APPLICATION_NAME=eureka-server
-      - SPRING_CLOUD_CONFIG_ENABLED=true
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8081
-    
     networks:
       - microservices-network
 
@@ -43,13 +38,9 @@ services:
           condition: service_healthy
 
   usuario-service:
-    image: usuario-service-image:2.0
+    image: usuario-service-image:1.0
     ports:
       - 9090:9090
-    environment:
-      - SPRING_APPLICATION_NAME=usuario-service
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8081
-      - SPRING_CLOUD_CONFIG_ENABLED=true
 
     networks:
       - microservices-network
@@ -70,10 +61,6 @@ services:
     image: moto-service-image:1.0
     ports:
       - 9000:9000 
-    environment:
-      - SPRING_APPLICATION_NAME=moto-service
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8081
-      - SPRING_CLOUD_CONFIG_ENABLED=true
     networks:
       - microservices-network
 
@@ -96,10 +83,7 @@ services:
     image: carro-service-image:1.0
     ports:
       - 10000:10000
-    environment:
-      - SPRING_APPLICATION_NAME=carro-service
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8081  
-      - SPRING_CLOUD_CONFIG_ENABLED=true
+
     networks:
       - microservices-network
 
@@ -118,13 +102,10 @@ services:
           condition: service_healthy
 
   gateway-service:
-    image: gateway-service-image:2.0
+    image: gateway-service-image:1.0
     ports:
       - 8080:8080
-    environment:
-      - SPRING_APPLICATION_NAME=gateway-service
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8081
-      - SPRING_CLOUD_CONFIG_ENABLED=true
+
     networks:
       - microservices-network
 
