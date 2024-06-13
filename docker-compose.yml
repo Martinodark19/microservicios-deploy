@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   config-server:
     image: config-server-image:1.0
@@ -99,7 +98,7 @@ services:
       - 10000:10000
     environment:
       - SPRING_APPLICATION_NAME=carro-service
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8081
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8081  
       - SPRING_CLOUD_CONFIG_ENABLED=true
     networks:
       - microservices-network
@@ -152,6 +151,8 @@ services:
 networks:
   microservices-network:
     driver: bridge
+
+
 
 
 
