@@ -1,0 +1,17 @@
+
+
+
+SET SERVEROUTPUT ON
+DECLARE
+    N1 NUMBER(1):=8;
+    N2 NUMBER(1):=9;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(CHAR(N1+N2));
+END;
+
+
+
+
+
+
+

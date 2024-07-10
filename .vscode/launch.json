@@ -1,0 +1,115 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "lolo",
+            "request": "launch",
+            "mainClass": "lolo"
+        },
+        {
+            "type": "java",
+            "name": "AuthenticationServiceApplication",
+            "request": "launch",
+            "mainClass": "com.example.authentication_service.AuthenticationServiceApplication",
+            "projectName": "authentication-service"
+        },
+        {
+            "type": "java",
+            "name": "SpringSeecurityAppApplication",
+            "request": "launch",
+            "mainClass": "com.app.SpringSeecurityAppApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "SpringSeecurityAppApplication",
+            "request": "launch",
+            "mainClass": "com.app.SpringSeecurityAppApplication",
+            "projectName": "SpringSeecurityApp"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "CarroServiceApplication",
+            "request": "launch",
+            "mainClass": "com.carro.service.CarroServiceApplication",
+            "projectName": "carro-service",
+            "env": {
+                "SPRING_CLOUD_CONFIG_URI": "http://config-server:8081",
+                "SPRING_APPLICATION_NAME": "carro-service",
+                "SPRING_CLOUD_CONFIG_ENABLED": "true"
+            }
+        },
+        {
+            "type": "java",
+            "name": "ConfigServerApplication",
+            "request": "launch",
+            "mainClass": "com.example.config_server.ConfigServerApplication",
+            "projectName": "config-server",
+            "env": {
+                "SERVER_PORT": "8081",
+                "SPRING_CLOUD_CONFIG_SERVER_GIT_DEFAULT_LABEL": "master",
+                "SPRING_CLOUD_CONFIG_SERVER_GIT_URI": "https://github.com/Martinodark19/microservicios-deploy.git",
+                "SPRING_CLOUD_CONFIG_SERVER_GIT_SEARCH_PATHS": "config-data",
+                "SPRING_APPLICATION_NAME": "config-server"
+            }
+        },
+        {
+            "type": "java",
+            "name": "EurekaServerApplication",
+            "request": "launch",
+            "mainClass": "com.example.eureka_server.EurekaServerApplication",
+            "projectName": "eureka-server",
+            "env": {
+                "SPRING_CLOUD_CONFIG_URI": "http://config-server:8081",
+                "SPRING_APPLICATION_NAME": "eureka-server",
+                "SPRING_CLOUD_CONFIG_ENABLED": "true"
+            }
+        },
+        {
+            "type": "java",
+            "name": "GatewayServiceApplication",
+            "request": "launch",
+            "mainClass": "com.example.gateway_service.GatewayServiceApplication",
+            "projectName": "gateway-service",
+            "env": {
+                "SPRING_CLOUD_CONFIG_URI": "http://config-server:8081",
+                "SPRING_APPLICATION_NAME": "gateway-service",
+                "SPRING_CLOUD_CONFIG_ENABLED": "true"
+            }
+        },
+        {
+            "type": "java",
+            "name": "MotoServiceApplication",
+            "request": "launch",
+            "mainClass": "com.moto.service.MotoServiceApplication",
+            "projectName": "moto-service",
+            "env": {
+                "SPRING_CLOUD_CONFIG_URI": "http://config-server:8081",
+                "SPRING_APPLICATION_NAME": "moto-service",
+                "SPRING_CLOUD_CONFIG_ENABLED": "true"
+            }
+        },
+        {
+            "type": "java",
+            "name": "UsuarioServiceApplication",
+            "request": "launch",
+            "mainClass": "com.usuario.service.UsuarioServiceApplication",
+            "projectName": "usuario-service",
+            "env": {
+                "SPRING_CLOUD_CONFIG_URI": "http://config-server:8081",
+                "SPRING_APPLICATION_NAME": "usuario-service",
+                "SPRING_CLOUD_CONFIG_ENABLED": "true"
+            }
+        }
+    ]
+}
