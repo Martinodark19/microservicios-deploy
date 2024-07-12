@@ -1,4 +1,4 @@
-package com.example.authentication_service.service;
+package com.example.authentication_service.service.AutenticationImpl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

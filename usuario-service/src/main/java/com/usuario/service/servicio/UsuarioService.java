@@ -26,23 +26,26 @@ public class UsuarioService {
 	@Autowired
 	private MotoFeignClient motoFeignClient;
 
-	public List<Usuario> getAll() {
+	public List<Usuario> getAll() 
+	{
 		return usuarioRepository.findAll();
 	}
 
 	public Boolean getUsuarioById(int id) {
 		Optional<Usuario> usuarioBuscar = usuarioRepository.findById(id);
 		System.out.println(usuarioBuscar);
-		if (usuarioBuscar.isPresent()) {
-			System.out.println("paso por el servicio y el usuario se encontro");
+		if (usuarioBuscar.isPresent()) 
+		{
 			return true;
-		} else {
-			System.out.println("no se encontro el usuario");
+		} 
+		else 
+		{
 			return false;
 		}
 	}
 
-	public Usuario getUsuarioObject(int id) {
+	public Usuario getUsuarioObject(int id) 
+	{
 		Optional<Usuario> obtenerUsuarioPorId = usuarioRepository.findById(id);
 		Usuario usuarioObtenido = obtenerUsuarioPorId.get();
 
@@ -56,29 +59,30 @@ public class UsuarioService {
 
 	public List<Carro> getCarros(int usuarioId) {
 		List<Carro> verificarExistenciaCarro = carroFeignClient.listarCarrosPorUsuarioId(usuarioId);
-		System.out.println(verificarExistenciaCarro);
-
 		return verificarExistenciaCarro;
 
 	}
 
 	// tenemos que arreglar quedamos en motos
-	public List<Moto> getMotos(int usuarioId) {
+	public List<Moto> getMotos(int usuarioId) 
+	{
 		List<Moto> motos = new ArrayList<>();
 
-		try {
+		try 
+		{
 			motos = motoFeignClient.listarMotosPorUsuarioId(usuarioId);
-			System.out.println("paso por aqui tambien");
 		}
 
-		catch (Exception e) {
+		catch (Exception e) 
+		{
 			System.out.println("Error al llamar a motoFeignClient.listarMotosPorUsuarioId: " + e.getMessage());
 		}
 
 		return motos;
 	}
 
-	public Carro saveCarro(int usuarioId, Carro carro) {
+	public Carro saveCarro(int usuarioId, Carro carro) 
+	{
 		carro.setUsuarioId(usuarioId);
 		Carro nuevoCarro = carroFeignClient.guardarCarro(carro);
 

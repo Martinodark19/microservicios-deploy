@@ -13,7 +13,8 @@ import com.usuario.service.modelos.Moto;
 
 @FeignClient(name = "moto-service")
 @RequestMapping("/moto")
-public interface MotoFeignClient {
+public interface MotoFeignClient 
+{
 
 	@PostMapping()
 	public Moto guardarMoto(@RequestBody Moto moto);
@@ -23,3 +24,14 @@ public interface MotoFeignClient {
 
 	
 }
+
+
+
+
+
+
+
+
+
+
+

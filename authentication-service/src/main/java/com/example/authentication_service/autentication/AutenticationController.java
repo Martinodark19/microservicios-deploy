@@ -1,4 +1,4 @@
-package com.example.authentication_service.controller;
+package com.example.authentication_service.autentication;
 
 
 import java.util.Map;
@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.example.authentication_service.dto.LoginRequest;
-import com.example.authentication_service.dto.Token;
+import com.example.authentication_service.dto.LoginRequestDto;
+import com.example.authentication_service.dto.TokenDto;
 import com.example.authentication_service.util.JwtUtils;
 
 @RestController
@@ -34,7 +33,7 @@ public class AutenticationController
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginAuthentication(@RequestBody LoginRequest loginRequest) 
+    public ResponseEntity<String> loginAuthentication(@RequestBody LoginRequestDto loginRequest) 
     {
         try 
         {
@@ -47,15 +46,14 @@ public class AutenticationController
         }
         catch (Exception e) 
         {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ha ocurrido un error interno en el servidor. Por favor reintente nuevamente");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Credenciales incorrectas. Porfavor reintente nuevamente");
         }
     }
 
     
     @PostMapping("/testingJWT")
-    public ResponseEntity<String> decodificando(@RequestBody Token token)
+    public ResponseEntity<String> decodificando(@RequestBody TokenDto token)
     {
-        System.out.println("paso por aqui");
         try
         {
             DecodedJWT decodedJWT = jwtUtils.decodedJWT(token.getToken());
@@ -63,8 +61,7 @@ public class AutenticationController
         }
         catch(Exception e)
         {
-            System.out.println("paso por la excepcion");
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("ha ocurrido un error al decodificarlo");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("No tiene autorizacion para acceder a este recurso. ");
         }
     }
         

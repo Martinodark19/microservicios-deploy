@@ -31,9 +31,11 @@ public class UsuarioController
 	private UsuarioService usuarioService;
 
 	@GetMapping
-	public ResponseEntity<List<Usuario>> listarUsuarios() {
+	public ResponseEntity<List<Usuario>> listarUsuarios() 
+	{
 		List<Usuario> usuarios = usuarioService.getAll();
-		if (usuarios.isEmpty()) {
+		if (usuarios.isEmpty()) 
+		{
 			return ResponseEntity.noContent().build();
 		}
 		return ResponseEntity.ok(usuarios);
@@ -63,28 +65,22 @@ public class UsuarioController
 	@GetMapping("/carros/{usuarioId}")
 	public ResponseEntity<List<Carro>> getCarros(@PathVariable("usuarioId") int usuarioId) 
 	{
-	
 		List<Carro> confirmarCarrosExist = usuarioService.getCarros(usuarioId);
 		if(confirmarCarrosExist.isEmpty())
 		{
-			System.out.println("no hay carros para el usuario desde controller");
-
 			return ResponseEntity.noContent().build();
 		}
 		else
 		{
-			System.out.println("paso por el controlador exitosamente y retorno la lista de carros");
 			return ResponseEntity.ok(confirmarCarrosExist);	
-
 		}
-
-
 	}
 
 
 	@CircuitBreaker(name = "carrosCB", fallbackMethod = "fallBackSaveCarro")
 	@PostMapping("/carro/{usuarioId}")
-	public ResponseEntity<Carro> saveCarro(@PathVariable("usuarioId") int usuarioId, @RequestBody Carro carro) {
+	public ResponseEntity<Carro> saveCarro(@PathVariable("usuarioId") int usuarioId, @RequestBody Carro carro) 
+	{
 		Carro nuevoCarro = usuarioService.saveCarro(usuarioId, carro);
 		return ResponseEntity.ok(nuevoCarro);
 	}
@@ -94,20 +90,15 @@ public class UsuarioController
 	@GetMapping("/motos/{usuarioId}")
 	public ResponseEntity<List<Moto>> listarMotos(@PathVariable("usuarioId") int usuarioId)
 	{
-		System.out.println("llego");
 
 		List<Moto> motos = usuarioService.getMotos(usuarioId);
 
-		System.out.println("bajo la wea");
-		System.out.println(motos);
 		if(motos.isEmpty())
 		{
-			System.out.println("las motos estan vacias desde el controlador");
 			return ResponseEntity.noContent().build();
 		}
 		else
 		{
-			System.out.println("retorno correctamente desde el controlador");
 			return ResponseEntity.ok(motos);
 		}
 
@@ -125,9 +116,7 @@ public class UsuarioController
 
 	
 
-
 	
-
 	// Fallbacks methods
 	public ResponseEntity<String> fallBackGetCarros(RuntimeException exception) 
 	{
