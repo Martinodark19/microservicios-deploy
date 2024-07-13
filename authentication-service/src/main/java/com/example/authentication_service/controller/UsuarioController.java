@@ -11,31 +11,24 @@ import com.example.authentication_service.feignClients.modelsFeignClients.Usuari
 import com.example.authentication_service.service.UsuarioService;
 
 @RestController
-@RequestMapping("/home/usuario")
+@RequestMapping("/auth/home")
 public class UsuarioController 
 {
     private UsuarioService usuarioService;
 
-    public UsuarioController(UsuarioService usuarioService)
-    {
+    public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
+
     @GetMapping
-    public ResponseEntity<List<UsuarioModel>> listarUsuarios()
-    {
+    public ResponseEntity<List<UsuarioModel>> listarUsuarios() {
         List<UsuarioModel> usuarios = usuarioService.obtenerUsuarios();
-        if(usuarios.isEmpty())
-        {
+        if (usuarios.isEmpty()) {
             return ResponseEntity.noContent().build();
-        }
-        else
-        {
+        } else {
             return ResponseEntity.ok().body(usuarios);
         }
 
     }
 
 }
-
-
-
