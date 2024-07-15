@@ -23,9 +23,8 @@ import com.example.authentication_service.service.AutenticationImpl.UserDetailSe
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-public class SecurityConfig {
-
-
+public class SecurityConfig 
+{
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
