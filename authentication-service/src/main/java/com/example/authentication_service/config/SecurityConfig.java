@@ -37,6 +37,7 @@ public class SecurityConfig
                     
                     http.requestMatchers(HttpMethod.POST, "auth/testingJWT").permitAll();
 
+
                     // Cofnigurar los endpoints privados
                     //http.requestMatchers(HttpMethod.POST, "/auth/post").hasAnyRole("ADMIN", "DEVELOPER");
                     //http.requestMatchers(HttpMethod.PATCH, "/auth/patch").hasAnyAuthority("REFACTOR");

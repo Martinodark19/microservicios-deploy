@@ -21,11 +21,17 @@ public class UsuarioController
     }
 
     @GetMapping
-    public ResponseEntity<List<UsuarioModel>> listarUsuarios() {
+    public ResponseEntity<List<UsuarioModel>> listarUsuarios() 
+    {
         List<UsuarioModel> usuarios = usuarioService.obtenerUsuarios();
-        if (usuarios.isEmpty()) {
+        if (usuarios.isEmpty()) 
+        {
+            System.out.println("paso por aqui EN EL EMPTY");
             return ResponseEntity.noContent().build();
-        } else {
+        } 
+        else 
+        {
+            System.out.println("paso por aqui");
             return ResponseEntity.ok().body(usuarios);
         }
 
