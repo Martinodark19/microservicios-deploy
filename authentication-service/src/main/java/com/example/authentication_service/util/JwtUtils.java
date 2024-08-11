@@ -41,7 +41,7 @@ public class JwtUtils {
                 .withSubject(username)
                 .withClaim("roles", roles) 
                 .withIssuedAt(new Date())
-                .withExpiresAt(new Date(System.currentTimeMillis() + 3600000))
+                .withExpiresAt(new Date(System.currentTimeMillis() + 36000000))
                 .sign(algorithm);
 
         return token;

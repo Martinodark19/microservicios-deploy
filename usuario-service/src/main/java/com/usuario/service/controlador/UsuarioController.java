@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +32,7 @@ public class UsuarioController
 	@GetMapping
 	public ResponseEntity<List<Usuario>> listarUsuarios() 
 	{
+		System.out.println("llego a listar usuarios desde gatewlly");
 		List<Usuario> usuarios = usuarioService.getAll();
 		if (usuarios.isEmpty()) 
 		{
@@ -65,6 +65,8 @@ public class UsuarioController
 	@GetMapping("/carros/{usuarioId}")
 	public ResponseEntity<List<Carro>> getCarros(@PathVariable("usuarioId") int usuarioId) 
 	{
+
+		System.out.println("LLEGO AL USUARIO DESDE GATEWAY");
 		List<Carro> confirmarCarrosExist = usuarioService.getCarros(usuarioId);
 		if(confirmarCarrosExist.isEmpty())
 		{
