@@ -38,13 +38,13 @@ services:
       timeout: 30s
       retries: 5
       start_period: 30s
-
+    
     depends_on:
        config-server:
           condition: service_healthy
 
   gateway-service:
-    image: gateway-service-image:1.0
+    image: gateway-service-image:3.0
     ports:
       - 8080:8080
     environment:
@@ -57,9 +57,16 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://gateway-service:8080/actuator/health || exit 1"]
       interval: 30s
-      timeout: 30s
+      timeout: 90s
       retries: 5
-      start_period: 30s
+      start_period: 90s
+
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 512M
 
     depends_on:
        config-server:

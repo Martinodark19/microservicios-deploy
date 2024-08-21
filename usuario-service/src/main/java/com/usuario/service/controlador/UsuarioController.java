@@ -65,7 +65,7 @@ public class UsuarioController
 	@GetMapping("/carros/{usuarioId}")
 	public ResponseEntity<List<Carro>> getCarros(@PathVariable("usuarioId") int usuarioId) 
 	{
-
+		//empezaremos a aplicar kafka en getCarros
 		System.out.println("LLEGO AL USUARIO DESDE GATEWAY");
 		List<Carro> confirmarCarrosExist = usuarioService.getCarros(usuarioId);
 		if(confirmarCarrosExist.isEmpty())
@@ -77,7 +77,7 @@ public class UsuarioController
 			return ResponseEntity.ok(confirmarCarrosExist);	
 		}
 	}
-
+	
 
 	@CircuitBreaker(name = "carrosCB", fallbackMethod = "fallBackSaveCarro")
 	@PostMapping("/carro/{usuarioId}")

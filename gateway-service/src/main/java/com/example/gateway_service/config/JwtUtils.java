@@ -17,7 +17,8 @@ import java.util.Date;
 import java.util.stream.Collectors;
 
 @Component
-public class JwtUtils {
+public class JwtUtils 
+{
 
     @Value("${spring.security.backend-emisor}")
     private String emisorToken; 
