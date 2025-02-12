@@ -44,13 +44,15 @@ services:
           condition: service_healthy
 
   gateway-service:
-    image: gateway-service-image:3.0
+    image: gateway-service-image:5.0
     ports:
       - 8080:8080
     environment:
       - SPRING_APPLICATION_NAME=gateway-service
       - SPRING_CLOUD_CONFIG_URI=http://config-server:8081
       - SPRING_CLOUD_CONFIG_ENABLED=true
+      - SPRING.SECURITY.BACKEND-EMISOR=backend_Autenticacion_2305
+      - SPRING.SECURITY.JWT.SECRETKEY=d5e511ae9383878dc36e0479090523dc866a59fe55d57492937e2493a25d10fc
     networks:
       - microservices-network
 
@@ -59,12 +61,12 @@ services:
       interval: 30s
       timeout: 90s
       retries: 5
-      start_period: 90s
+      start_period: 120s
 
     deploy:
       resources:
         limits:
-          memory: 4G
+          memory: 8G
         reservations:
           memory: 512M
 
@@ -82,6 +84,8 @@ services:
       - SPRING_APPLICATION_NAME=usuario-service
       - SPRING_CLOUD_CONFIG_URI=http://config-server:8081
       - SPRING_CLOUD_CONFIG_ENABLED=true
+      - SPRING.DATASOURCE.URL=jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+      - SPRING.KAFKA.BOOTSTRAPSERVERS=localhost:29092
 
     networks:
       - microservices-network

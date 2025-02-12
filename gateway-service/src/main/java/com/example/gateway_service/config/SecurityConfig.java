@@ -8,13 +8,12 @@ import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
+
 @Configuration
 @EnableWebFluxSecurity
-
 public class SecurityConfig 
 {
         private JwtFilter jwtFilter;
-
         public SecurityConfig(JwtFilter jwtFilter) 
         {
            this.jwtFilter = jwtFilter;

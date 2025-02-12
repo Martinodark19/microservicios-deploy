@@ -87,7 +87,6 @@ public class UsuarioController
 		return ResponseEntity.ok(nuevoCarro);
 	}
 
-
 	@CircuitBreaker(name = "motosCB", fallbackMethod = "fallBackGetMotos")
 	@GetMapping("/motos/{usuarioId}")
 	public ResponseEntity<List<Moto>> listarMotos(@PathVariable("usuarioId") int usuarioId)
@@ -114,6 +113,11 @@ public class UsuarioController
 		Moto nuevaMoto = usuarioService.saveMoto(usuarioId, moto);
 
 		return ResponseEntity.ok(nuevaMoto);
+	}
+
+	public ResponseEntity<String> pruebaController(@RequestBody String dato)
+	{
+
 	}
 
 	

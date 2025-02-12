@@ -52,7 +52,8 @@ public class UsuarioService {
 		return usuarioObtenido;
 	}
 
-	public Usuario save(Usuario usuario) {
+	public Usuario save(Usuario usuario) 
+	{
 		Usuario nuevoUsuario = usuarioRepository.save(usuario);
 		return nuevoUsuario;
 	}

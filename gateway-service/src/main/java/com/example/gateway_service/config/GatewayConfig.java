@@ -9,7 +9,8 @@ import org.springframework.context.annotation.Configuration;
 public class GatewayConfig 
 {
      @Bean
-    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) 
+    {
         return builder.routes()
                 .route("authentication-service", r -> r.path("/auth/**")
                         .uri("lb://authentication-service"))
